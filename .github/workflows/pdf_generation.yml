@@ -1,0 +1,59 @@
+name: PDF Generation
+
+on:
+  push:
+    tags:
+      - '*'
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Convert Markdown to PDF
+        # https://github.com/pandoc/pandoc-action-example
+        uses: docker://pandoc/latex:2.9
+        with:
+          args: --output ${{ github.repository_owner }}_resume.pdf RESUME.md
+
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: Resume PDF
+          path: ${{ github.repository_owner }}_resume.pdf
+
+      - name: Update latest tag
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.email "workflow@github.com"
+          git config --global user.name "GitHub Workflow"
+          timestamp=$(date --iso-8601=seconds)
+          sha=$(git rev-parse --short HEAD)
+          git tag -f latest -m "Latest release (${sha} - ${timestamp})"
+          git push -f origin latest
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        # Create releases on tags and main branch.
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body_path: CHANGELOG.md
+          files: |
+            ${{ github.repository_owner }}_resume.pdf
+
+      - name: Create latest Release
+        id: create_latest_release
+        uses: softprops/action-gh-release@v1
+        # Create releases on tags and main branch.
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: latest
+          body_path: CHANGELOG.md
+          files: |
+            ${{ github.repository_owner }}_resume.pdf
