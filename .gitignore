@@ -1,0 +1,26 @@
+# Ignore JetBrains IDEs
+.idea/
+
+# Ignore Visual Studio Code
+.vscode/
+
+# Ignore Vim
+*.swp
+*.swo
+
+# Ignore macOS
+.DS_Store
+
+# Ignore Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignore editor backup files
+*~
+
+# Ignore yarn.lock (for yarn)
+yarn.lock
+
+# Ignore generated files from IDEs and build tools
+*.pdf
