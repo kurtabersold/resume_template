@@ -15,6 +15,7 @@
 node_modules/
 npm-debug.log
 yarn-error.log
+.node-version
 
 # Ignore editor backup files
 *~
