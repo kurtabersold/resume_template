@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-alpha.0",
   "devDependencies": {
     "commitizen": "^4.3.0",
     "conventional-changelog-cli": "^3.0.0",
@@ -11,7 +11,7 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     },
-  "conventional-changelog": {
+    "conventional-changelog": {
       "preset": "angular",
       "releaseCount": 0,
       "tagPrefix": ""
@@ -19,6 +19,6 @@
   },
   "scripts": {
     "commit": "cz",
-    "version": "standard-version"
+    "release": "standard-version --prerelease alpha --sign"
   }
 }
