@@ -54,7 +54,7 @@ Once installed, you can run the following command in your repository to automati
 the changelog and manage git tags based on your commit messages:
 
 ```shell
-npm run version
+npm run release
 ```
 
 This will update the package version, generate the changelog in CHANGELOG.md, create a Git tag, and

@@ -10,6 +10,11 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    },
+  "conventional-changelog": {
+      "preset": "angular",
+      "releaseCount": 0,
+      "tagPrefix": ""
     }
   },
   "scripts": {
