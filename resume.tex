@@ -1,0 +1,43 @@
+% Custom LaTeX template for resume
+\documentclass[11pt,letterpaper]{article} % Set font size to 11pt and paper size to Letter
+\usepackage[margin=1in]{geometry}        % Adjust page margins to 1 inch on all sides
+\usepackage{hyperref}                    % Package for hyperlinks
+\usepackage{enumitem}                    % Package for customizing lists
+\usepackage{titlesec}                    % Package for customizing section titles
+
+\renewcommand{\rmdefault}{lmss}          % Set default Roman font to Latin Modern Sans Serif
+\renewcommand{\sfdefault}{lmss}          % Set default Sans Serif font to Latin Modern Sans Serif
+
+\hypersetup{
+  colorlinks=true,                       % Enable colored links
+  urlcolor=black,                        % Set URL color to black
+  linkcolor=black,                       % Set internal link color to black
+  citecolor=black                        % Set citation color to black
+}
+
+\def\tightlist{}                         % Define tightlist to avoid errors with pandoc conversion
+
+% Remove default section numbering
+\setcounter{secnumdepth}{0}
+
+% Customize section titles (Large, bold, with horizontal rule below)
+\titleformat{\section}
+  {\normalfont\Large\bfseries}
+  {}{0em}{}[\titlerule]
+
+% Customize subsection titles (large, bold)
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}
+  {}{0em}{}
+
+% Customize subsubsection titles (normal size, bold)
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}
+  {}{0em}{}
+
+\begin{document}
+
+$body$ % Content from Markdown will be inserted here
+
+\end{document}
+

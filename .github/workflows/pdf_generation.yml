@@ -17,9 +17,9 @@ jobs:
 
       - name: Convert Markdown to PDF
         # https://github.com/pandoc/pandoc-action-example
-        uses: docker://pandoc/latex:2.9
+        uses: docker://pandoc/extra
         with:
-          args: --output ${{ github.repository_owner }}_resume.pdf RESUME.md
+          args: --output ${{ github.repository_owner }}_resume.pdf --template=resume.tex RESUME.md
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
