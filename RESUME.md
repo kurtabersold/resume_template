@@ -2,8 +2,8 @@
 
 ## Contact Information:
 - Address: Your Street, City, State, ZIP Code
-- Phone: (123) 456-7890
-- Email: your@email.com
+- Phone: [(123) 456-7890](tel:+11234567890)
+- Email: [your@email.com](mailto:your@email.com)
 - LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/yourprofile)
 
 ## Summary
