@@ -60,6 +60,18 @@ npm run release
 This will update the package version, generate the changelog in CHANGELOG.md, create a Git tag, and
 commit the changes. Finally, you can push the changes and tags to the remote repository.
 
+## Generating PDF Locally
+
+To generate the PDF version of the resume locally, you can use the following Docker command:
+
+```shell
+docker run --rm -v `pwd`:/data pandoc/extra --output resume.pdf --template=resume.tex RESUME.md
+```
+
+This command will run the pandoc/extra Docker image and use the provided LaTeX template to convert
+the Markdown file (RESUME.md) into a PDF (resume.pdf). Make sure you have Docker installed on your
+system and the current working directory contains the necessary files.
+
 ## Workflow Permissions
 
 Please ensure that you have the necessary permissions set for the GitHub Actions workflow.

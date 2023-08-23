@@ -3,9 +3,9 @@ name: PDF Generation
 on:
   push:
     tags:
-      - '*'
+      - '*' # Run on all tags
     branches:
-      - main
+      - '*' # Run on all branches
 
 jobs:
   build:
@@ -37,20 +37,18 @@ jobs:
           git tag -f latest -m "Latest release (${sha} - ${timestamp})"
           git push -f origin latest
 
-      - name: Create Release
+      - name: Create Release for Tags
         id: create_release
         uses: softprops/action-gh-release@v1
-        # Create releases on tags.
         if: startsWith(github.ref, 'refs/tags/')
         with:
           body_path: CHANGELOG.md
           files: |
             ${{ github.repository_owner }}_resume.pdf
 
-      - name: Create latest Release
+      - name: Create latest Release for Main Branch
         id: create_latest_release
         uses: softprops/action-gh-release@v1
-        # Create latest release on main branch.
         if: github.ref == 'refs/heads/main'
         with:
           tag_name: latest
